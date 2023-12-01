@@ -12,6 +12,12 @@ abstract class Task(private val day: Int) {
         TODO("Part 2 is not implemented yet!")
     }
 
+    fun display() {
+        println("Day $day")
+        println("Task 1 output: ${part1()}")
+        println("Task 2 output: ${part2()}")
+    }
+
     protected fun loadInputLines(suffix: String = ""): List<String> =
         with("input_${day}${suffix}.txt") {
             AdventOfCode::class.java.getResource("/$this")
