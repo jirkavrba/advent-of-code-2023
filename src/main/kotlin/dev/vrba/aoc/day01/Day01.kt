@@ -4,50 +4,38 @@ import dev.vrba.aoc.Task
 
 object Day01 : Task(1) {
 
-    override fun part1(): Any {
-        val lines = loadInputLines()
-        val parsed = lines.map { it.firstDigit() * 10 + it.lastDigit() }
+    override fun part1() =
+        loadInputLines()
+            .sumOf { it.firstDigit() * 10 + it.lastDigit() }
 
-        return parsed.sum()
-    }
-
-    override fun part2(): Any {
-        val lines = loadInputLines()
-        val parsed = lines
+    override fun part2() =
+        loadInputLines()
             .map { it.translateNumbersToDigits() }
-            .map { it.firstDigit() * 10 + it.lastDigit() }
+            .sumOf { it.firstDigit() * 10 + it.lastDigit() }
 
-        return parsed.sum()
-    }
-
-    private fun CharSequence.translateNumbersToDigits(): CharSequence {
-        // The translated number is duplicated to prevent consuming an overlapping character from another digit
-        // E.g. "eightwothree" would be interpreted as "eigh23", which is incorrect
+    private fun String.translateNumbersToDigits(): String {
         val translations = mapOf(
-            "one" to "on21one",
-            "two" to "two2two",
-            "three" to "three3three",
-            "four" to "four4four",
-            "five" to "five5five",
-            "six" to "six6six",
-            "seven" to "seven7seven",
-            "eight" to "eight8eight",
-            "nine" to "nine9nine"
+            "one" to 1,
+            "two" to 2,
+            "three" to 3,
+            "four" to 4,
+            "five" to 5,
+            "six" to 6,
+            "seven" to 7,
+            "eight" to 8,
+            "nine" to 9
         )
 
-        return translations.entries.fold(this) { string, (search, replacement) ->
-            string.replace(search.toRegex(), replacement)
+        return translations.entries.fold(this) { string, (word, value) ->
+            // The translated number is duplicated to prevent consuming an overlapping character from another digit
+            // E.g. "eightwothree" would be interpreted as "eigh23", which is incorrect
+            string.replace(word, "${word.last()}${value}${word.first()}")
         }
     }
 
+    private fun String.firstDigit(): Int =
+        firstOrNull { it.isDigit() }?.digitToInt() ?: 0
 
-    private fun CharSequence.firstDigit(): Int? =
-        firstOrNull { it.isDigit() }?.digitToInt()
-
-    private fun CharSequence.lastDigit(): Int? =
-        lastOrNull { it.isDigit() }?.digitToInt()
-
-    private operator fun Int?.times(other: Int?) = (this ?: 0) * (other ?: 0)
-
-    private operator fun Int?.plus(other: Int?) = (this ?: 0) + (other ?: 0)
+    private fun String.lastDigit(): Int =
+        lastOrNull { it.isDigit() }?.digitToInt() ?: 0
 }
