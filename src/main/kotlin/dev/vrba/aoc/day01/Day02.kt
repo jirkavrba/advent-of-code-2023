@@ -26,6 +26,16 @@ object Day02 : Task(2) {
             .sumOf { it.number }
     }
 
+    override fun part2() =
+        parseInput()
+            .sumOf { game ->
+                val red = game.reveals.maxOf { it.red }
+                val green = game.reveals.maxOf { it.green }
+                val blue = game.reveals.maxOf { it.blue }
+
+                red * green * blue
+            }
+
     private fun Game.isPossibleWithBag(bag: Dices) =
         reveals.all {
             it.red <= bag.red &&
