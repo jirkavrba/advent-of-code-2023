@@ -23,6 +23,7 @@ abstract class Task(private val day: Int) {
             AdventOfCode::class.java.getResource("/$this")
                 ?.readText()
                 ?.lines()
+                ?.filter { it.isNotBlank() }
                 ?: throw RuntimeException("Resource file $this not found.")
         }
 
