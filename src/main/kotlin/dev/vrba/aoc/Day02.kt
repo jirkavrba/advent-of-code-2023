@@ -1,6 +1,4 @@
-package dev.vrba.aoc.day01
-
-import dev.vrba.aoc.Task
+package dev.vrba.aoc
 
 object Day02 : Task(2) {
     data class Dices(
