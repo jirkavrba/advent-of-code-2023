@@ -51,7 +51,6 @@ object Day02 : Task(2) {
         val (number, reveals) = removePrefix("Game ").split(": ")
         val parsedReveals = reveals.split("; ").map {
             it.split(", ").fold(Dices()) { dices, part ->
-                println(part)
                 val (count, color) = part.split(" ")
 
                 when (color) {
