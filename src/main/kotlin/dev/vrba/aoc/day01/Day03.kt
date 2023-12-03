@@ -28,12 +28,40 @@ object Day03 : Task(3) {
             .sumOf { it.value }
     }
 
+    override fun part2(): Any {
+        val (numbers, symbols) = parseInput()
+        val numbersMap = numbers
+            .flatMap { token -> token.occupiedPositions.map { it to token.value } }
+            .fold(emptyMap<Position, Int>()) { map, positions -> map + positions }
+
+        return symbols
+            .filter { it.symbol == "*" }
+            .sumOf { symbol ->
+                val neighbourNumbers = symbol.neighbourPositions.mapNotNull { numbersMap[it] }.toSet()
+                if (neighbourNumbers.size == 2) neighbourNumbers.reduce { a, b -> a * b } else 0
+            }
+    }
+
+    private val SymbolToken.neighbourPositions: Set<Position>
+        get() =
+            (-1..1).flatMap { x ->
+                (-1..1).map { y ->
+                    Position(position.x + x, position.y + y)
+                }
+            }.toSet()
+
     private val NumberToken.neighbourPositions: Set<Position>
         get() =
             (-1..length).flatMap { x ->
                 (-1..1).map { y ->
                     Position(origin.x + x, origin.y + y)
                 }
+            }.toSet()
+
+    private val NumberToken.occupiedPositions: Set<Position>
+        get() =
+            (0..<length).map {
+                Position(origin.x + it, origin.y)
             }.toSet()
 
     private fun parseInput(): Pair<Set<NumberToken>, Set<SymbolToken>> {
