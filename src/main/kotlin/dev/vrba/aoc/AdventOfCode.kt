@@ -8,7 +8,8 @@ fun main() {
     val solvedDays = listOf(
         Day01,
         Day02,
-        Day03
+        Day03,
+        Day04
     )
 
     solvedDays.forEach {

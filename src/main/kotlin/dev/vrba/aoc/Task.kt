@@ -4,11 +4,11 @@ import java.lang.RuntimeException
 
 abstract class Task(private val day: Int) {
 
-    open fun part1(): Any {
+    open fun part1(): Int {
         TODO("Part 1 is not implemented yet!")
     }
 
-    open fun part2(): Any {
+    open fun part2(): Int {
         TODO("Part 2 is not implemented yet!")
     }
 
@@ -18,7 +18,7 @@ abstract class Task(private val day: Int) {
         println("Task 2 output: ${part2()}")
     }
 
-    protected fun loadInputLines(suffix: String = ""): List<String> =
+    protected fun readInputLines(suffix: String = ""): List<String> =
         with("input_${day}${suffix}.txt") {
             AdventOfCode::class.java.getResource("/$this")
                 ?.readText()

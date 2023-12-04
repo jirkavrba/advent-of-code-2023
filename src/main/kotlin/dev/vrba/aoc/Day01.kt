@@ -3,11 +3,11 @@ package dev.vrba.aoc
 object Day01 : Task(1) {
 
     override fun part1() =
-        loadInputLines()
+        readInputLines()
             .sumOf { it.firstDigit() * 10 + it.lastDigit() }
 
     override fun part2() =
-        loadInputLines()
+        readInputLines()
             .map { it.translateNumbersToDigits() }
             .sumOf { it.firstDigit() * 10 + it.lastDigit() }
 

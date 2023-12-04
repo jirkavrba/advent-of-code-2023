@@ -12,7 +12,7 @@ object Day02 : Task(2) {
         val reveals: List<Dices>
     )
 
-    override fun part1(): Any {
+    override fun part1(): Int {
         val bag = Dices(
             red = 12,
             green = 13,
@@ -42,7 +42,7 @@ object Day02 : Task(2) {
         }
 
     private fun parseInput() =
-        loadInputLines()
+        readInputLines()
             .map { it.parseGame() }
 
     private fun String.parseGame(): Game {

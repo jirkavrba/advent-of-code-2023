@@ -17,7 +17,7 @@ object Day03 : Task(3) {
         val position: Position
     )
 
-    override fun part1(): Any {
+    override fun part1(): Int {
         val (numbers, symbols) = parseInput()
         val symbolPositions = symbols.map { it.position }.toSet()
 
@@ -26,7 +26,7 @@ object Day03 : Task(3) {
             .sumOf { it.value }
     }
 
-    override fun part2(): Any {
+    override fun part2(): Int {
         val (numbers, symbols) = parseInput()
         val numbersMap = numbers
             .flatMap { token -> token.occupiedPositions.map { it to token.value } }
@@ -69,7 +69,7 @@ object Day03 : Task(3) {
             val currentNumberToken: NumberToken? = null,
         )
 
-        return loadInputLines().mapIndexed { y, line ->
+        return readInputLines().mapIndexed { y, line ->
             val result = line.foldIndexed(ReductionState()) { x, state, character ->
                 when {
                     character.isDigit() -> state.copy(
