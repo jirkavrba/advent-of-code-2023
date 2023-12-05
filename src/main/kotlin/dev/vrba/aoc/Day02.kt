@@ -1,6 +1,6 @@
 package dev.vrba.aoc
 
-object Day02 : Task(2) {
+object Day02 : Task<Int>(2) {
     data class Dices(
         val red: Int = 0,
         val green: Int = 0,

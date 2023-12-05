@@ -1,6 +1,6 @@
 package dev.vrba.aoc
 
-object Day03 : Task(3) {
+object Day03 : Task<Int>(3) {
     data class Position(
         val x: Int,
         val y: Int

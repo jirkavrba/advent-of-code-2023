@@ -1,6 +1,6 @@
 package dev.vrba.aoc
 
-object Day01 : Task(1) {
+object Day01 : Task<Int>(1) {
 
     override fun part1() =
         readInputLines()

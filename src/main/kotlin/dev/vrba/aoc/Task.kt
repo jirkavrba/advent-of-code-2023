@@ -2,13 +2,13 @@ package dev.vrba.aoc
 
 import java.lang.RuntimeException
 
-abstract class Task(private val day: Int) {
+abstract class Task<Output : Number>(private val day: Int) {
 
-    open fun part1(): Int {
+    open fun part1(): Output {
         TODO("Part 1 is not implemented yet!")
     }
 
-    open fun part2(): Int {
+    open fun part2(): Output {
         TODO("Part 2 is not implemented yet!")
     }
 

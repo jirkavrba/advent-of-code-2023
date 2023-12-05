@@ -3,7 +3,7 @@ package dev.vrba.aoc
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.pow
 
-object Day04 : Task(4) {
+object Day04 : Task<Int>(4) {
 
     data class ScratchCard(
         val number: Int,
@@ -20,6 +20,7 @@ object Day04 : Task(4) {
     override fun part1(): Int =
         parseInput().sumOf { it.points }
 
+    // TODO: Candidate for optimization
     override fun part2(): Int {
         val initialScratchcards = parseInput()
 
