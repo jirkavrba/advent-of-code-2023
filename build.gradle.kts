@@ -3,13 +3,14 @@ plugins {
 }
 
 group = "dev.vrba.aoc"
-version = "1.0-SNAPSHOT"
+version = "2023"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
