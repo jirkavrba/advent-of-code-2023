@@ -1,6 +1,6 @@
 package dev.vrba.aoc2023
 
-@Solve
+@Solved
 object Day08 : Task<Long>(8, "Haunted Wasteland") {
 
     override fun part1(lines: List<String>): Long {
