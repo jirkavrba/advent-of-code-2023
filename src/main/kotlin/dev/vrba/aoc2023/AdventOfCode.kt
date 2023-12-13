@@ -2,6 +2,15 @@ package dev.vrba.aoc2023
 
 object AdventOfCode2023
 
+fun main() {
+    val days = listOf(
+        Day01,
+        Day02,
+    )
+
+    days.map { it.run() }
+}
+
 @Target(AnnotationTarget.CLASS)
 annotation class Solved
 
@@ -48,10 +57,3 @@ abstract class Task<T : Number>(
     }
 }
 
-fun main() {
-    val days = listOf(
-        Day01
-    )
-
-   days.map { it.run() }
-}
