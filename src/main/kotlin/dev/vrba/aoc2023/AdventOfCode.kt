@@ -15,6 +15,8 @@ fun main() {
         Day09,
         Day10,
         Day11,
+//        Day12,
+        Day13,
     )
 
     days.map { it.run() }
@@ -25,6 +27,9 @@ annotation class Solved
 
 @Target(AnnotationTarget.CLASS)
 annotation class UseExampleInput(val suffix: String = "_example")
+
+@Target(AnnotationTarget.CLASS)
+annotation class UseWholeFileAsInput
 
 abstract class Task<T : Number>(
     private val day: Int,
@@ -57,12 +62,14 @@ abstract class Task<T : Number>(
             .classLoader
             .getResource(file)
             ?.readText()
-            ?.lines()
-            ?.filter { it.isNotBlank() }
+            ?.let { content ->
+                if (annotations.any { it is UseWholeFileAsInput }) listOf(content)
+                else content.lines().filter { it.isNotBlank() }
+            }
             ?: throw IllegalArgumentException("Input file $file not found!")
 
         println("Part 1: ${part1(input)}")
-        println("Part 1: ${part2(input)}")
+        println("Part 2: ${part2(input)}")
     }
 }
 
