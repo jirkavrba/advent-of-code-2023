@@ -14,6 +14,7 @@ fun main() {
         Day08,
         Day09,
         Day10,
+        Day11,
     )
 
     days.map { it.run() }
