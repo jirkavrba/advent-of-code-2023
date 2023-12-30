@@ -1,7 +1,7 @@
 package dev.vrba.aoc2023
 
 @Solved
-object Day10 : Task<Long>(10, "Pipe Maze") {
+data object Day10 : Task<Long>(10, "Pipe Maze") {
 
     override fun part1(lines: List<String>): Long {
         val (start, map) = parseInput(lines)

@@ -1,7 +1,7 @@
 package dev.vrba.aoc2023
 
 @Solved
-object Day05 : Task<Long>(5, "If You Give A Seed A Fertilizer") {
+data object Day05 : Task<Long>(5, "If You Give A Seed A Fertilizer") {
 
     override fun part1(lines: List<String>): Long {
         val almanac = parseInput(lines)

@@ -2,7 +2,7 @@ package dev.vrba.aoc2023
 
 
 @Solved
-object Day03 : Task<Int>(3, "Gear Ratios") {
+data object Day03 : Task<Int>(3, "Gear Ratios") {
 
     override fun part1(lines: List<String>): Int {
         val (numbers, symbols) = parseInput(lines)

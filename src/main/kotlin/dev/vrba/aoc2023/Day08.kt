@@ -1,7 +1,7 @@
 package dev.vrba.aoc2023
 
 @Solved
-object Day08 : Task<Long>(8, "Haunted Wasteland") {
+data object Day08 : Task<Long>(8, "Haunted Wasteland") {
 
     override fun part1(lines: List<String>): Long {
         val (directions, nodes) = parseInput(lines)

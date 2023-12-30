@@ -3,7 +3,7 @@ package dev.vrba.aoc2023
 private typealias History = List<Long>
 
 @Solved
-object Day09 : Task<Long>(9, "Mirage Maintenance") {
+data object Day09 : Task<Long>(9, "Mirage Maintenance") {
 
     override fun part1(lines: List<String>): Long {
         return parseInput(lines).sumOf { it.predictNext() }

@@ -4,7 +4,7 @@ package dev.vrba.aoc2023
 private typealias Rank = Char
 
 @Solved
-object Day07 : Task<Int>(7, "Camel Cards") {
+data object Day07 : Task<Int>(7, "Camel Cards") {
 
     override fun part1(lines: List<String>): Int {
         val ranks = listOf('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A')

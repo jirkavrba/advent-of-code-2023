@@ -6,7 +6,7 @@ import kotlin.math.roundToLong
 import kotlin.math.sqrt
 
 @Solved
-object Day06 : Task<Long>(6, "Wait For It") {
+data object Day06 : Task<Long>(6, "Wait For It") {
 
     override fun part1(lines: List<String>): Long {
         return parseInput(lines).fold(1L) { product, record ->

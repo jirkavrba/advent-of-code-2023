@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.pow
 
 @Solved
-object Day04 : Task<Int>(4, "Scratchcards") {
+data object Day04 : Task<Int>(4, "Scratchcards") {
 
     override fun part1(lines: List<String>): Int {
         return parseInput(lines).sumOf { it.points }

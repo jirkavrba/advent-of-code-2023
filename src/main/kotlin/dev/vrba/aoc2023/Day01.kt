@@ -1,7 +1,7 @@
 package dev.vrba.aoc2023
 
 @Solved
-object Day01 : Task<Int>(1, "Trebuchet?!") {
+data object Day01 : Task<Int>(1, "Trebuchet?!") {
 
     override fun part1(lines: List<String>): Int =
         lines.sumOf { it.firstDigit() * 10 + it.lastDigit() }

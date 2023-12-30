@@ -2,7 +2,7 @@ package dev.vrba.aoc2023
 
 
 @Solved
-object Day02 : Task<Int>(2, "Cube Conundrum") {
+data object Day02 : Task<Int>(2, "Cube Conundrum") {
 
     override fun part1(lines: List<String>): Int {
         val bag = Dices(

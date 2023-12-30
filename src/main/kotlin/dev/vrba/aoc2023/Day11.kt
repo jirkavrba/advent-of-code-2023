@@ -4,7 +4,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 @Solved
-object Day11 : Task<Long>(11, "Cosmic Expansion") {
+data object Day11 : Task<Long>(11, "Cosmic Expansion") {
 
     override fun part1(lines: List<String>): Long {
         return solve(parseInput(lines), 2)

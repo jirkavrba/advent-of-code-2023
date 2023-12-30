@@ -1,7 +1,8 @@
 package dev.vrba.aoc2023
 
+@Solved
 @UseWholeFileAsInput
-object Day13 : Task<Int>(13, "Point of Incidence") {
+data object Day13 : Task<Int>(13, "Point of Incidence") {
 
     override fun part1(lines: List<String>): Int {
         return parseInput(lines).sumOf { pattern ->

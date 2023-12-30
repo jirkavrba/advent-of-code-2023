@@ -3,23 +3,10 @@ package dev.vrba.aoc2023
 object AdventOfCode2023
 
 fun main() {
-    val days = listOf(
-        Day01,
-        Day02,
-        Day03,
-        Day04,
-        Day05,
-        Day06,
-        Day07,
-        Day08,
-        Day09,
-        Day10,
-        Day11,
-//        Day12,
-        Day13,
-    )
-
-    days.map { it.run() }
+    Task::class.sealedSubclasses
+        .mapNotNull { it.objectInstance }
+        .sortedBy { it.day }
+        .forEach { it.run() }
 }
 
 @Target(AnnotationTarget.CLASS)
@@ -31,8 +18,8 @@ annotation class UseExampleInput(val suffix: String = "_example")
 @Target(AnnotationTarget.CLASS)
 annotation class UseWholeFileAsInput
 
-abstract class Task<T : Number>(
-    private val day: Int,
+sealed class Task<T : Number>(
+    val day: Int,
     private val title: String? = null
 ) {
     protected open fun part1(lines: List<String>): T =
@@ -68,8 +55,9 @@ abstract class Task<T : Number>(
             }
             ?: throw IllegalArgumentException("Input file $file not found!")
 
-        println("Part 1: ${part1(input)}")
-        println("Part 2: ${part2(input)}")
+
+        println("Part 1: ${try { part1(input) } catch (_: NotImplementedError) { "❄\uFE0F Not implemented yet" } }")
+        println("Part 2: ${try { part2(input) } catch (_: NotImplementedError) { "❄\uFE0F Not implemented yet" } }")
     }
 }
 
