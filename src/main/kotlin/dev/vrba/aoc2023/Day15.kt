@@ -1,5 +1,6 @@
 package dev.vrba.aoc2023
 
+@Solved
 @UseWholeFileAsInput
 data object Day15 : Task<Int>(15, "Lens Library") {
 
