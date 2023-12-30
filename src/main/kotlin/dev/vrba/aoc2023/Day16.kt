@@ -9,6 +9,7 @@ import dev.vrba.aoc2023.Day16.Mirror.TopLeftMirror
 import dev.vrba.aoc2023.Day16.Mirror.TopRightMirror
 import dev.vrba.aoc2023.Day16.Mirror.VerticalSplit
 
+@Solved
 data object Day16 : Task<Int>(16, "The Floor Will Be Lava") {
 
     data class Position(val x: Int, val y: Int) {
@@ -70,7 +71,41 @@ data object Day16 : Task<Int>(16, "The Floor Will Be Lava") {
         override fun toString() = "($position $direction)"
     }
 
+    data class ParsedInput(
+        val bounds: Bounds,
+        val map: Map<Position, Tile>,
+    )
+
     override fun part1(lines: List<String>): Int {
+        val (bounds, map) = parseInput(lines)
+        val start = Beam(Position(-1, 0), Right)
+
+        return numberOfEnergizedPositions(bounds, map, start)
+    }
+
+    override fun part2(lines: List<String>): Int {
+        val (bounds, map) = parseInput(lines)
+
+        val horizontalStartPositions = (0..<bounds.height).flatMap {
+            listOf(
+                Beam(Position(-1, it), Right),
+                Beam(Position(bounds.width, it), Left)
+            )
+        }
+
+        val verticalStartPositions = (0..<bounds.width).flatMap {
+            listOf(
+                Beam(Position(it, -1), Down),
+                Beam(Position(it, bounds.height), Up)
+            )
+        }
+
+        return (verticalStartPositions + horizontalStartPositions).maxOf {
+            numberOfEnergizedPositions(bounds, map, it)
+        }
+    }
+
+    private fun parseInput(lines: List<String>): ParsedInput {
         val bounds = Bounds(
             width = lines[0].length,
             height = lines.size
@@ -92,7 +127,12 @@ data object Day16 : Task<Int>(16, "The Floor Will Be Lava") {
         }
 
         val map = tiles.associateBy { it.position }
-        val initial = listOf(Beam(Position(-1, 0), Right)) to emptySet<Beam>()
+
+        return ParsedInput(bounds, map)
+    }
+
+    private fun numberOfEnergizedPositions(bounds: Bounds, map: Map<Position, Tile>, start: Beam): Int {
+        val initial = listOf(start) to emptySet<Beam>()
         val iterations = generateSequence(initial) { (beams, visited) ->
             beams.flatMap { beam ->
                 val next = beam.position + beam.direction.vector
@@ -114,5 +154,4 @@ data object Day16 : Task<Int>(16, "The Floor Will Be Lava") {
 
         return positions.size
     }
-
 }
