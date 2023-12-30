@@ -1,5 +1,6 @@
 package dev.vrba.aoc2023
 
+@Solved
 data object Day14 : Task<Int>(14, "Parabolic Reflector Dish") {
 
     data class ColumnPart(
